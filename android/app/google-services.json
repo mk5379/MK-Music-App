@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "147406472326",
+    "project_id": "mk-music-2195b",
+    "storage_bucket": "mk-music-2195b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147406472326:android:b0062b8564d106b879fd07",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu_4thARTt0YY575Xm0rW1rgPakO2B1WU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:147406472326:android:5a8549cc8df63cf779fd07",
+        "android_client_info": {
+          "package_name": "com.example.music_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu_4thARTt0YY575Xm0rW1rgPakO2B1WU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
