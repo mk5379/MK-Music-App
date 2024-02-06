@@ -18,14 +18,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: const Text("MK-Music",style: TextStyle(fontFamily: "Quicksand",color: Colors.blueAccent,fontSize: 25),),
-        actions: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.search,color: Colors.white,))
-        ],
-        leading: const Icon(Icons.sort_rounded,color: Colors.white,),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.builder(

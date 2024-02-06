@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screen/Account.dart';
+import 'package:flutter_application_1/Screen/Drawers.dart';
 import 'package:flutter_application_1/Screen/song.dart';
 import 'Screen/Login.dart';
 import 'Screen/Register.dart';
@@ -7,6 +8,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'firebase_options.dart';
 import 'Screen/home.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 void main() async {
@@ -45,7 +47,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: FirebaseAuth.instance.currentUser != null ? const Home() : const Login()
+      home: FirebaseAuth.instance.currentUser != null ? const MyHomePage() : const Login()
       // home: const Register(),
     );
   }
@@ -107,13 +109,17 @@ class _MyHomePageState extends State<MyHomePage> {
     // );
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: const Text('Music is an essential thing for humans',style: TextStyle(fontSize: 15,fontFamily: "Quicksand",color: Colors.white)),backgroundColor: Colors.black,),
-      drawer: Drawer(
+      appBar: AppBar(title: const Text('Music is an essential thing for humans',style: TextStyle(fontSize: 15,fontFamily: "Quicksand",color: Colors.white)),backgroundColor: Colors.black,
+        actions: [
+          IconButton(onPressed: (){}, icon: const Icon(Icons.search,color: Colors.white,))
+        ],),
+      drawer:  Drawer(
+        surfaceTintColor: Colors.white,
         shadowColor: Colors.white,
         backgroundColor: Colors.black,
         child: ListView(
-          children: const [
-            DrawerHeader(
+          children: [
+            const DrawerHeader(
               child: Column(
                 children: [
                   Image(image: AssetImage("Images/Music_Logo.png"),height: 100,),
@@ -122,32 +128,44 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ),
 
-            ListTile(
-              leading: Icon(Icons.home,size: 25,color: Colors.lightBlue,),
-              title: Text("Home",style: TextStyle(fontSize: 15,color: Colors.lightBlue,fontFamily: "Quicksand"),),
+            const ListTile(
+              leading: Icon(Icons.home,size: 25,color: Colors.white,),
+              title: Text("Home",style: TextStyle(fontSize: 15,color: Colors.white,fontFamily: "Quicksand"),),
             ),
 
-            ListTile(
-              leading: Icon(Icons.person,size: 25,color: Colors.lightBlue,),
-              title: Text("Your Account",style: TextStyle(fontSize: 15,color: Colors.lightBlue,fontFamily: "Quicksand"),),
+            // ListTile(
+            //   leading: Icon(Icons.person,size: 25,color: Colors.white,),
+            //   title: Text("Your Account",style: TextStyle(fontSize: 15,color: Colors.white,fontFamily: "Quicksand"),),
+            // ),
+
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context){
+                  return const Account();
+                }));
+              },
+              child: const ListTile(
+              leading: Icon(Icons.person,size: 25,color: Colors.white,),
+              title: Text("Your Account",style: TextStyle(fontSize: 15,color: Colors.white,fontFamily: "Quicksand"),),
+            ),
             ),
 
-            ExpansionTile(
-              title: Text("Choose the Songs",style: TextStyle(fontSize: 17,color: Colors.lightBlue,fontFamily: "Quicksand"),),
-              subtitle: Text("Kind of Songs",style: TextStyle(fontSize: 15,color: Colors.lightBlue,fontFamily: "Quicksand")),
+            const ExpansionTile(
+              title: Text("Choose the Songs",style: TextStyle(fontSize: 17,color: Colors.white,fontFamily: "Quicksand"),),
+              subtitle: Text("Kind of Songs",style: TextStyle(fontSize: 15,color: Colors.white,fontFamily: "Quicksand")),
               children: [
-                ListTile(title: Text("English Songs",style: TextStyle(fontSize: 12,color: Colors.lightBlue,fontFamily: "Quicksand")),),
-                ListTile(title: Text("Burmese Songs",style: TextStyle(fontSize: 12,color: Colors.lightBlue,fontFamily: "Quicksand")),),
-                ListTile(title: Text("Latin Songs",style: TextStyle(fontSize: 12,color: Colors.lightBlue,fontFamily: "Quicksand")),)
+                ListTile(title: Text("English Songs",style: TextStyle(fontSize: 12,color: Colors.white,fontFamily: "Quicksand")),),
+                ListTile(title: Text("Burmese Songs",style: TextStyle(fontSize: 12,color: Colors.white,fontFamily: "Quicksand")),),
+                ListTile(title: Text("Latin Songs",style: TextStyle(fontSize: 12,color: Colors.white,fontFamily: "Quicksand")),)
               ],
             ),
 
-            ExpansionTile(
-              title: Text("Your Account",style: TextStyle(fontSize: 17,color: Colors.lightBlue,fontFamily: "Quicksand"),),
-              subtitle: Text("Profile,Logout",style: TextStyle(fontSize: 15,color: Colors.lightBlue,fontFamily: "Quicksand")),
+            const ExpansionTile(
+              title: Text("Your Account",style: TextStyle(fontSize: 17,color: Colors.white,fontFamily: "Quicksand"),),
+              subtitle: Text("Profile,Logout",style: TextStyle(fontSize: 15,color: Colors.white,fontFamily: "Quicksand")),
               children: [
-                ListTile(title: Text("Your Profile",style: TextStyle(fontSize: 12,color: Colors.lightBlue,fontFamily: "Quicksand")),),
-                ListTile(title: Text("Logout",style: TextStyle(fontSize: 12,color: Colors.lightBlue,fontFamily: "Quicksand")),),
+                ListTile(title: Text("Your Profile",style: TextStyle(fontSize: 12,color: Colors.white,fontFamily: "Quicksand")),),
+                ListTile(title: Text("Logout",style: TextStyle(fontSize: 12,color: Colors.white,fontFamily: "Quicksand")),),
               ],
             ),
           ],
@@ -156,9 +174,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
       body: bodyList[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black38,
-        unselectedLabelStyle: const TextStyle(color: Colors.white,fontFamily: "Merriweather"),
-        selectedLabelStyle: const TextStyle(color: Colors.white,fontFamily: "Merriweather"),
+        backgroundColor: Colors.black,
+        unselectedItemColor: Colors.white,
         onTap: onItemTap,
         currentIndex: _selectedIndex,
         items: bottomNavigationBarList
